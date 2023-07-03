@@ -29,5 +29,8 @@ urlpatterns = [
     path("ll/", views.losuj),
     path("kosci/", views.kosci),
     path("lotek/", views.lottek),
-    path('hello_form/', form_views.hello_formularz)
+    path('hello_form/', form_views.hello_formularz),
+    path('kosci_form/', form_views.kosci),
+    path('dane/', form_views.list_danych),
+    path('osoba/<int:id>/', form_views.get_person)
 ]
