@@ -35,5 +35,7 @@ urlpatterns = [
     path('osoba/<int:id>/', form_views.get_person),
     path('persons/', views.PersonView),
     path('delete/<int:id>/', form_views.del_person),
-    path('add_person/', views.add_person_view)
+    path('add_person/', views.add_person_view),
+    path('add_book/', views.add_book),
+    path('show_books/', views.show_books),
 ]

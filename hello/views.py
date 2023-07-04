@@ -2,7 +2,7 @@ import random
 
 from django.shortcuts import render, redirect
 
-from hello.models import Person
+from hello.models import Person, Book
 
 
 # Create your views here.
@@ -74,5 +74,18 @@ def add_person_view(request):
     p.last_name = nazwisko
     p.save()
     return redirect('/persons/')
+
+
+def show_books(request):
+    books = Book.objects.all()
+    return render(request, 'show_books.html', {'books':books})
+
+def add_book(request):
+    if request.method == 'GET':
+        return render(request, 'add_book.html')
+    title = request.POST.get('title')
+    year = request.POST.get('year')
+    Book.objects.create(title=title, year=year)
+    return redirect('/show_books/')
 
 

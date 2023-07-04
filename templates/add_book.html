@@ -8,15 +8,14 @@
     <title>Document</title>
 </head>
 <body>
-<ul>
-<form>
-    <input type="text" name="last_name" placeholder="Nazwisko">
+
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="Tytuł">
+    <input type="number" name="year" placeholder="Rok">
     <input type="submit">
 </form>
-{% for person in persons %}
-    <li>{{ person.first_name }}
-    {{ person.last_name }}</li>
-{% endfor %}
-</ul>
+
 </body>
 </html>
