@@ -15,10 +15,14 @@
 </form>
 <table>
     <tr>
-        <th>Title</th><th>year</th><th>Gatunek</th>
+        <th>Title</th><th>year</th><th>Gatunek</th><th>Author</th>
     </tr>
     {% for book in books %}
-        <tr><td>{{ book.title }}</td><td>{{ book.year }}</td><td>{{ book.get_genre_display }}</td></tr>
+        <tr><td>{{ book.title }}</td>
+            <td>{{ book.year }}</td>
+            <td>{{ book.get_genre_display }}</td>
+            <td>{{ book.author.first_name }} {{ book.author.last_name }}</td>
+        </tr>
     {% endfor %}
 </table>
 

@@ -89,13 +89,20 @@ def show_books(request):
         books = books.filter(year=year)
     return render(request, 'show_books.html', {'books':books})
 
+def person_view_detail(request, id):
+    person = Person.objects.get(pk=id)
+    return render(request, 'person.html', {'person':person})
+
 def add_book(request):
     if request.method == 'GET':
-        return render(request, 'add_book.html', {'genres': genre_choises})
+        return render(request, 'add_book.html', {'genres': genre_choises,
+                                                 'persons':Person.objects.all()})
     title = request.POST.get('title')
     year = request.POST.get('year')
     genre = request.POST.get('genre')
-    Book.objects.create(title=title, year=year, genre=genre)
+    author = request.POST.get('author')
+    p = Person.objects.get(pk=author)
+    Book.objects.create(title=title, year=year, genre=genre, author=p)
     return redirect('/show_books/')
 
 

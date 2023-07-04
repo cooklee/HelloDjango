@@ -9,15 +9,16 @@
 </head>
 <body>
 <ul>
-<form>
-    <input type="text" name="first_name" placeholder="Imie">
-    <input type="text" name="last_name" placeholder="Nazwisko">
-    <input type="submit">
-</form>
-{% for person in persons %}
-    <li>{{ person.first_name }}
-    {{ person.last_name }}</li>
-{% endfor %}
+    <form>
+        <input type="text" name="first_name" placeholder="Imie">
+        <input type="text" name="last_name" placeholder="Nazwisko">
+        <input type="submit">
+    </form>
+    {% for person in persons %}
+        <li><a href="/person/{{ person.id }}/"> {{ person.first_name }}
+            {{ person.last_name }}</a>
+                    </li>
+    {% endfor %}
 </ul>
 </body>
 </html>

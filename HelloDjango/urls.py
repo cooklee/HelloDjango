@@ -38,4 +38,5 @@ urlpatterns = [
     path('add_person/', views.add_person_view),
     path('add_book/', views.add_book),
     path('show_books/', views.show_books),
+    path('person/<int:id>/', views.person_view_detail)
 ]
