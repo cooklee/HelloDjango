@@ -1,6 +1,8 @@
 import random
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+from hello.models import Person
 
 
 # Create your views here.
@@ -54,3 +56,23 @@ def rzut(request, ilosc, kosc):
     for _ in range(ilosc):
         lst.append(random.randint(1, kosc))
     return render(request, 'kosci2.html', {'wyniki': lst, 'ilosc': ilosc, 'kosc': kosc})
+
+
+
+def PersonView(request):
+    persons = Person.objects.all()
+    return render(request, 'persons.html', {'persons':persons})
+
+
+def add_person_view(request):
+    if request.method == 'GET':
+        return render(request, 'form_add_person.html')
+    imie = request.POST.get('first_name')
+    nazwisko = request.POST.get('last_name')
+    p = Person()
+    p.first_name = imie
+    p.last_name = nazwisko
+    p.save()
+    return redirect('/persons/')
+
+

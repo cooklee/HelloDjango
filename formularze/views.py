@@ -1,6 +1,6 @@
 import random
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 # Create your views here.
@@ -28,7 +28,11 @@ def kosci(request):
     return render(request, 'formularz_kosci.html')
 
 
-lst = []
+lst = [
+    'sławek Bo',
+    'Gosia pe',
+    'Kasia De'
+]
 
 
 def list_danych(request):
@@ -45,3 +49,8 @@ def get_person(request, id):
     if id >= len(lst):
         return render(request, '404.html')
     return render(request, 'osoba.html', {"osoba": lst[id]})
+
+
+def del_person(request, id):
+    lst.pop(id)
+    return redirect('/dane/')

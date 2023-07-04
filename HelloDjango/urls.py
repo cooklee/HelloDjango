@@ -32,5 +32,8 @@ urlpatterns = [
     path('hello_form/', form_views.hello_formularz),
     path('kosci_form/', form_views.kosci),
     path('dane/', form_views.list_danych),
-    path('osoba/<int:id>/', form_views.get_person)
+    path('osoba/<int:id>/', form_views.get_person),
+    path('persons/', views.PersonView),
+    path('delete/<int:id>/', form_views.del_person),
+    path('add_person/', views.add_person_view)
 ]

@@ -9,18 +9,13 @@
 </head>
 <body>
 
-<form method="">
+
+<form method="post">
     {% csrf_token %}
-    <input type="text" name="imie" placeholder="imie">
-    <input type="text" name="nazwisko" placeholder="nazwisko">
-    <input type="submit">
+    <input type="text" name="first_name" placeholder="Imie">
+    <input type="text" name="last_name" placeholder="nazwisko">
+    <input type="submit" >
 </form>
-<ul>
-    {% for item in dane %}
-        <li>{{ item }}</li>
-    {% empty %}
-        <h1>Brak Danych </h1>
-    {% endfor %}
-</ul>
+
 </body>
 </html>

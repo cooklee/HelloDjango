@@ -8,19 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-
-<form method="">
-    {% csrf_token %}
-    <input type="text" name="imie" placeholder="imie">
-    <input type="text" name="nazwisko" placeholder="nazwisko">
-    <input type="submit">
-</form>
 <ul>
-    {% for item in dane %}
-        <li>{{ item }}</li>
-    {% empty %}
-        <h1>Brak Danych </h1>
-    {% endfor %}
+{% for person in persons %}
+    <li>{{ person.first_name }}
+    {{ person.last_name }}</li>
+{% endfor %}
 </ul>
 </body>
 </html>
