@@ -8,13 +8,17 @@
     <title>Document</title>
 </head>
 <body>
-
+<form>
+    <input type="text" name="title" placeholder="Tytuł">
+    <input type="number" name="year" placeholder="Rok">
+    <input type="submit">
+</form>
 <table>
     <tr>
-        <th>Title</th><th>year</th>
+        <th>Title</th><th>year</th><th>Gatunek</th>
     </tr>
     {% for book in books %}
-        <tr><td>{{ book.title }}</td><td>{{ book.year }}</td></tr>
+        <tr><td>{{ book.title }}</td><td>{{ book.year }}</td><td>{{ book.get_genre_display }}</td></tr>
     {% endfor %}
 </table>
 

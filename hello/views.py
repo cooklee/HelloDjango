@@ -2,7 +2,7 @@ import random
 
 from django.shortcuts import render, redirect
 
-from hello.models import Person, Book
+from hello.models import Person, Book, genre_choises
 
 
 # Create your views here.
@@ -61,6 +61,10 @@ def rzut(request, ilosc, kosc):
 
 def PersonView(request):
     persons = Person.objects.all()
+    last_name = request.GET.get('last_name','')
+    first_name = request.GET.get('first_name','')
+    persons = persons.filter(last_name__icontains=last_name)
+    persons = persons.filter(first_name__icontains=first_name)
     return render(request, 'persons.html', {'persons':persons})
 
 
@@ -77,15 +81,21 @@ def add_person_view(request):
 
 
 def show_books(request):
+    title = request.GET.get('title', '')
+    year = request.GET.get('year')
     books = Book.objects.all()
+    books = books.filter(title__icontains=title)
+    if year:
+        books = books.filter(year=year)
     return render(request, 'show_books.html', {'books':books})
 
 def add_book(request):
     if request.method == 'GET':
-        return render(request, 'add_book.html')
+        return render(request, 'add_book.html', {'genres': genre_choises})
     title = request.POST.get('title')
     year = request.POST.get('year')
-    Book.objects.create(title=title, year=year)
+    genre = request.POST.get('genre')
+    Book.objects.create(title=title, year=year, genre=genre)
     return redirect('/show_books/')
 
 
